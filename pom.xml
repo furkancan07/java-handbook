@@ -92,6 +92,13 @@
             <artifactId>spring-data-jpa</artifactId>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Source: https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -12,8 +12,11 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
 
+
+
     @Transactional
     public Category findById(Long id) {
         return categoryRepository.findById(id).orElseThrow();
     }
+
 }
