@@ -1,6 +1,7 @@
 package org.example.spring.idempotency.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.spring.idempotency.aspect.Idempotent;
 import org.example.spring.idempotency.dto.TransferRequest;
 import org.example.spring.idempotency.dto.TransferResponse;
 import org.example.spring.idempotency.service.IdempotencyService;
@@ -21,6 +22,13 @@ public class TransferController {
     ResponseEntity<TransferResponse> transfer(@RequestHeader("Idempotency-key") String key, @RequestBody TransferRequest req){
         TransferResponse response= idempotencyService.execute(key, TransferResponse.class,()->transferService.transfer(req));
         return ResponseEntity.ok(response);
+    }
+    /**
+    * görüldüğü üzere tek anatasyonla çok sade bir yapı 2 implemet biçimini de göstermiş oldum
+    * */
+    @Idempotent
+    ResponseEntity<TransferResponse> transferWithIdempotentAnnotation(@RequestBody TransferRequest req){
+        return ResponseEntity.ok(transferService.transfer(req));
     }
 
 }

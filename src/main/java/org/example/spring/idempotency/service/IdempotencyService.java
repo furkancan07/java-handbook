@@ -20,6 +20,8 @@ import java.util.function.Supplier;
  * işte functional inteface supplier vs de var o reposda var bakarsın
  * onun dışında idempotency deddiğimiz şey para gönder senaryousu üzüerinden
  * yapcaksak şu demek : aynı anda 2 defa para göndere tıkladık diyelim 1 tanesi işlenmeli diğeri işlenmemeli
+ *
+ * gayet güzel bir yapı kurduk ama best practise bunu aop tabanlı yapmak
  * */
 @Service
 @RequiredArgsConstructor
