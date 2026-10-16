@@ -54,7 +54,7 @@ public class IdempotencyAspect {
                  throw new RuntimeException();
              }
 
-
+             repo.markCompleted(key,toJson(result));
              return result;
          });
         }catch (RuntimeException ex){
@@ -80,5 +80,12 @@ public class IdempotencyAspect {
     }
     private HttpServletRequest getRequests(){
           return (HttpServletRequest) RequestContextHolder.currentRequestAttributes();
+    }
+    private String toJson(Object result){
+        try {
+            return mapper.writeValueAsString(result);
+        }catch(JsonProcessingException ex) {
+            throw new IllegalStateException(ex);
+        }
     }
 }
