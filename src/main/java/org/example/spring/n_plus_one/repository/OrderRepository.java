@@ -21,9 +21,10 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     @EntityGraph
     @Query("select o from Order o")
     List<Order> findWithEntityGraph();
-    // bu şkidle de yazabilirz ekstra sorgu eklememize gerek kalmaz
+    /**bu şkidle de yazabilirz ekstra sorgu eklememize gerek kalmaz ama
+     entity graph kullanıca metot ismi sorguyu tanımlıyorsa query yazmana gerk yok tanımlamıyorsa yazcan **/
     @EntityGraph(attributePaths = {"items","items.product"})
-    List<Order> findWithEntityGraph2();
+    List<Order> findAllBy();
     @Override
     @EntityGraph(attributePaths = {"items","items.product"})
     List<Order> findAll();
@@ -37,6 +38,9 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     // 4- batch size var bu entity tarafında verilir
 
     // 5- @Fetch(FetchMode.SUBSELECT) yaparak da yapabiliriz 1 sorgu yerine hibernate 2 sorguyla yapar bunu
+
+
+
 
 
 }
